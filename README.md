@@ -1,3 +1,7 @@
+# offseason testing
+
+To be kept seperate for projects such as pathing improvements, LED testing
+
 # PowerUp2018-340
 
 Team 340 repository for robot code, vision, models, and any other programming files.
