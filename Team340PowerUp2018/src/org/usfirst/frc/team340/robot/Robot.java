@@ -32,6 +32,8 @@ import org.usfirst.frc.team340.robot.subsystems.Climber;
 import org.usfirst.frc.team340.robot.subsystems.Drive;
 import org.usfirst.frc.team340.robot.subsystems.Elevator;
 
+import com.rpappa.led.LEDDriver;
+
 import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.DriverStation;
@@ -55,6 +57,8 @@ public class Robot extends TimedRobot {
 	public static Climber climber;
 	public static Elevator elevator;
 	public static OI oi;
+	
+	public static LEDDriver leds;
 
 	Command m_autonomousCommand;
 	SendableChooser<Command> m_chooser = new SendableChooser<>();
@@ -74,6 +78,7 @@ public class Robot extends TimedRobot {
 		claw = new Claw();
 		climber = new Climber();
 		elevator = new Elevator();
+		leds = new LEDDriver(0);
 		// SUBSYSTEMS BEFORE THIS LINE, OI AFTER
 		oi = new OI();
 

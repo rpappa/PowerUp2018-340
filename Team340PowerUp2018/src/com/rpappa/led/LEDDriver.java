@@ -14,6 +14,16 @@ public class LEDDriver {
 		public static final int[] DATAS = new int[] {0x04, 0x05, 0x06, 0x07};
 	}
 	
+	public static enum Mode {
+		OFF(0x00), SOLID(0x01), NIGHTRIDER_SINGLE(0x02), NIGHTRIDER_RAINBOW(0x03), RAINBOW(0x04);
+		
+		public final int value;
+
+	    Mode(int value) {
+	      this.value = value;
+	    }
+	}
+	
 	public LEDDriver(int deviceAddress) {
 		i2c = new I2C(I2C.Port.kOnboard, deviceAddress);
 	}
@@ -22,6 +32,10 @@ public class LEDDriver {
 		byte[] temp = new byte[1];
 		i2c.read(Registers.STATUS, 1, temp);
 		return temp[0];
+	}
+	
+	public void setMode(Mode mode) {
+		i2c.write(Registers.MODE, mode.value);
 	}
 	
 	public void setMode(int mode) {

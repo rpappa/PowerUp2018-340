@@ -3,6 +3,8 @@ package org.usfirst.frc.team340.robot.commands.claw;
 import org.usfirst.frc.team340.robot.Robot;
 import org.usfirst.frc.team340.robot.RobotMap;
 
+import com.rpappa.led.LEDDriver;
+
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
@@ -32,11 +34,15 @@ public class ClawAcquireCube extends Command {
     	Robot.claw.setGreenLEDs(false);
     	Robot.claw.spinWheelsIn(speed);
     	Robot.claw.neutral();
+    	
+    	Robot.leds.setMode(LEDDriver.Mode.RAINBOW);
+    	
     	goodSamples = 0;
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	Robot.leds.setMode(LEDDriver.Mode.RAINBOW);
     	Robot.claw.spinWheelsIn(speed);
 //    	Robot.claw.neutral();
     	if(Robot.claw.isCubePresent()) {
@@ -67,6 +73,8 @@ public class ClawAcquireCube extends Command {
     	Robot.claw.setGreenLEDs(false);
     	Robot.claw.close();
     	Robot.claw.stopWheels();
+    	Robot.leds.setMode(LEDDriver.Mode.SOLID);
+    	Robot.leds.setRGB(new int[]{255, 100, 100});
     }
 
     // Called when another command which requires one or more of the same
